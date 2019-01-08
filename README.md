@@ -4,7 +4,18 @@
 
 Installs scripts that save you time and effort.
 
-...
+| Windows                  | Linux                  | Description |
+| ------------------------ | ---------------------- | ----------- |
+| `deploy.bat`             | `./deploy`             | ...         |
+| `deploy-backend.bat`     | `./deploy-backend`     | ...         |
+| `deploy-frontend.bat`    | `./deploy-frontend`    | ...         |
+| `deploy-theme.bat`       | `./deploy-theme`       | ...         |
+| `deploy-theme-blank.bat` | `./deploy-theme-blank` | ...         |
+| `deploy-theme-luma.bat`  | `./deploy-theme-luma`  | ...         |
+| `di.bat`                 | `./di`                 | ...         |
+| `grunt-theme.bat`        | `./grunt-theme`        | ...         |
+| `grunt-theme-blank.bat`  | `./grunt-theme-blank`  | ...         |
+| `grunt-theme-luma.bat`   | `./grunt-theme-luma`   | ...         |
 
 ## Install
 
