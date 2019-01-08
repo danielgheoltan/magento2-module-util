@@ -122,6 +122,8 @@ class InstallScripts extends Command
     }
 
     /**
+     * Publish files
+     *
      * @throws \Magento\Framework\Exception\FileSystemException
      */
     private function publishFiles()
