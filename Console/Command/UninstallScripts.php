@@ -9,6 +9,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Filesystem;
+use Magento\Framework\OsInfo;
 use Magento\Framework\Module\Dir;
 
 class UninstallScripts extends Command
@@ -20,6 +21,11 @@ class UninstallScripts extends Command
      * @var Data
      */
     protected $helper;
+
+    /**
+     * @var OsInfo
+     */
+    protected $osInfo;
 
     /**
      * @var \Magento\Framework\Filesystem\Directory\Write
@@ -38,18 +44,21 @@ class UninstallScripts extends Command
 
     /**
      * @param Data $helper
+     * @param OsInfo $osInfo
      * @param Filesystem $filesystem
      * @param Dir\Reader $reader
      * @throws \Magento\Framework\Exception\FileSystemException
      */
     public function __construct(
         Data $helper,
+        OsInfo $osInfo,
         Filesystem $filesystem,
         Dir\Reader $reader
     ) {
         parent::__construct();
 
         $this->helper = $helper;
+        $this->osInfo = $osInfo;
         $this->filesystem = $filesystem;
         $this->rootDir = $filesystem->getDirectoryWrite(DirectoryList::ROOT);
         $this->files = $this->helper->getFiles();
@@ -73,6 +82,9 @@ class UninstallScripts extends Command
     private function unPublishFiles()
     {
        foreach ($this->files as $file) {
+           if ($this->osInfo->isWindows()) {
+               $file .= '.bat';
+           }
            $dir = $this->rootDir;
            $dir->delete($file);
        }
