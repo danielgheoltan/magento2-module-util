@@ -20,9 +20,9 @@ php bin/magento dg-util:install-scripts
 ## Remove
 
 ```
+php bin/magento dg-util:uninstall-scripts
 composer remove dg/module-util
 php bin/magento cache:flush
-php bin/magento dg-util:uninstall-scripts
 ```
 
 ## Update
