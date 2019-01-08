@@ -76,10 +76,12 @@ class UninstallScripts extends Command
     }
 
     /**
+     * Unpublish files
+     *
      * @throws \Magento\Framework\Exception\FileSystemException
      * @throws \Magento\Framework\Exception\ValidatorException
      */
-    private function unPublishFiles()
+    private function unpublishFiles()
     {
        foreach ($this->files as $file) {
            if ($this->osInfo->isWindows()) {
@@ -96,7 +98,7 @@ class UninstallScripts extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         try {
-            $this->unPublishFiles();
+            $this->unpublishFiles();
         } catch (\Exception $e) {
             $output->writeln('<error>' . $e->getMessage() . '</error>');
             return \Magento\Framework\Console\Cli::RETURN_FAILURE;
