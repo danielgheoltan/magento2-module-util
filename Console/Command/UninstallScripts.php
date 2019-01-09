@@ -9,7 +9,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Filesystem;
-use Magento\Framework\OsInfo;
 use Magento\Framework\Module\Dir;
 
 class UninstallScripts extends Command
@@ -23,9 +22,9 @@ class UninstallScripts extends Command
     protected $helper;
 
     /**
-     * @var OsInfo
+     * @var Filesystem
      */
-    protected $osInfo;
+    protected $filesystem;
 
     /**
      * @var \Magento\Framework\Filesystem\Directory\Write
@@ -33,35 +32,27 @@ class UninstallScripts extends Command
     protected $rootDir;
 
     /**
-     * @var Filesystem
-     */
-    protected $filesystem;
-
-    /**
      * @var array
      */
-    protected $files;
+    protected $scripts;
 
     /**
+     * UninstallScripts constructor.
+     *
      * @param Data $helper
-     * @param OsInfo $osInfo
      * @param Filesystem $filesystem
-     * @param Dir\Reader $reader
      * @throws \Magento\Framework\Exception\FileSystemException
      */
     public function __construct(
         Data $helper,
-        OsInfo $osInfo,
-        Filesystem $filesystem,
-        Dir\Reader $reader
+        Filesystem $filesystem
     ) {
         parent::__construct();
 
         $this->helper = $helper;
-        $this->osInfo = $osInfo;
         $this->filesystem = $filesystem;
-        $this->rootDir = $filesystem->getDirectoryWrite(DirectoryList::ROOT);
-        $this->files = $this->helper->getFiles();
+        $this->rootDir = $this->filesystem->getDirectoryWrite(DirectoryList::ROOT);
+        $this->scripts = $this->helper->getScripts();
     }
 
     /**
@@ -83,12 +74,11 @@ class UninstallScripts extends Command
      */
     private function unpublishFiles()
     {
-       foreach ($this->files as $file) {
-           if ($this->osInfo->isWindows()) {
-               $file .= '.bat';
-           }
+       foreach ($this->scripts as $script) {
            $dir = $this->rootDir;
-           $dir->delete($file);
+           $path = $script;
+           
+           $dir->delete($path);
        }
     }
 
@@ -99,6 +89,7 @@ class UninstallScripts extends Command
     {
         try {
             $this->unpublishFiles();
+            $output->writeln('<info>Scripts have been successfully uninstalled.</info>');
         } catch (\Exception $e) {
             $output->writeln('<error>' . $e->getMessage() . '</error>');
             return \Magento\Framework\Console\Cli::RETURN_FAILURE;

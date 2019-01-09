@@ -10,7 +10,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
-use Magento\Framework\OsInfo;
 use Magento\Framework\Module\Dir;
 
 class InstallScripts extends Command
@@ -24,14 +23,9 @@ class InstallScripts extends Command
     protected $helper;
 
     /**
-     * @var OsInfo
+     * @var Filesystem
      */
-    protected $osInfo;
-
-    /**
-     * @var \Magento\Framework\Filesystem\Directory\Write
-     */
-    protected $moduleDir;
+    protected $filesystem;
 
     /**
      * @var \Magento\Framework\Filesystem\Directory\Write
@@ -39,54 +33,27 @@ class InstallScripts extends Command
     protected $rootDir;
 
     /**
-     * @var String
-     */
-    protected $sourcePath;
-
-    /**
-     * @var String
-     */
-    protected $targetPath;
-
-    /**
-     * @var Filesystem
-     */
-    protected $filesystem;
-
-    /**
-     * @var Dir\Reader
-     */
-    protected $moduleReader;
-
-    /**
      * @var array
      */
-    protected $files;
+    protected $scripts;
 
     /**
+     * InstallScripts constructor.
+     *
      * @param Data $helper
-     * @param OsInfo $osInfo
      * @param Filesystem $filesystem
-     * @param Dir\Reader $reader
      * @throws \Magento\Framework\Exception\FileSystemException
-     * @throws \Magento\Framework\Exception\ValidatorException
      */
     public function __construct(
         Data $helper,
-        OsInfo $osInfo,
-        Filesystem $filesystem,
-        Dir\Reader $reader
+        Filesystem $filesystem
     ) {
         parent::__construct();
 
         $this->helper = $helper;
-        $this->osInfo = $osInfo;
         $this->filesystem = $filesystem;
-        $this->moduleReader = $reader;
-        $this->rootDir = $filesystem->getDirectoryWrite(DirectoryList::ROOT);
-        $this->moduleDir = $this->moduleReader->getModuleDir(Dir::MODULE_ETC_DIR, 'DG_Util');
-        $this->sourcePath = str_replace($this->rootDir->getAbsolutePath(),'', $this->moduleDir);
-        $this->files = $this->helper->getFiles();
+        $this->rootDir = $this->filesystem->getDirectoryWrite(DirectoryList::ROOT);
+        $this->scripts = $this->helper->getScripts();
     }
 
     /**
@@ -128,13 +95,11 @@ class InstallScripts extends Command
      */
     private function publishFiles()
     {
-        foreach ($this->files as $file) {
-            if ($this->osInfo->isWindows()) {
-                $file .= '.bat';
-            }
+        foreach ($this->scripts as $script) {
             $dir = $this->rootDir;
-            $sourcePath = $this->sourcePath . '/files/' . ($this->osInfo->isWindows() ? 'win' : 'linux') . '/' . $file;
-            $destinationPath = $file;
+            $sourcePath = $this->helper->getScriptRelativePath($script);
+            $destinationPath = $script;
+
             $this->publishFile($dir, $sourcePath, $destinationPath);
         }
     }
@@ -146,6 +111,7 @@ class InstallScripts extends Command
     {
         try {
             $this->publishFiles();
+            $output->writeln('<info>Scripts have been successfully installed to Magento root folder.</info>');
         } catch (\Exception $e) {
             $output->writeln('<error>' . $e->getMessage() . '</error>');
             return \Magento\Framework\Console\Cli::RETURN_FAILURE;
