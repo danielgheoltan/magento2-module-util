@@ -3,4 +3,4 @@ clear
 
 # -----------------------------------------------------------------------------
 
-./deploy-theme Magento/blank en_US
+./grunt-theme dg

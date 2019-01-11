@@ -3,4 +3,4 @@ clear
 
 # -----------------------------------------------------------------------------
 
-./deploy-theme Magento/blank en_US
+./deploy--grunt-theme Magento/luma en_US luma
