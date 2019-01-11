@@ -20,6 +20,7 @@ Installs scripts that save you time and effort.
 | `di.bat`                       | `./di`                       | ...         |
 | `grunt-theme.bat`              | `./grunt-theme`              | ...         |
 | `grunt-theme-blank.bat`        | `./grunt-theme-blank`        | ...         |
+| `grunt-theme-dg.bat`           | `./grunt-theme-dg`           | ...         |
 | `grunt-theme-luma.bat`         | `./grunt-theme-luma`         | ...         |
 
 ## Install
