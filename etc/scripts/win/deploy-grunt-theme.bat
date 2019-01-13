@@ -5,6 +5,7 @@ CLS
 
 SET THEME=%1
 SET LOCALE=%2
+SET GRUNT_THEME=%3
 
 :: ----------------------------------------------------------------------------
 
@@ -17,7 +18,9 @@ RMDIR /S /Q "pub/static/frontend/%THEME%/%LOCALE%" ^
 
 :: ----------------------------------------------------------------------------
 
+CALL grunt exec:%GRUNT_THEME%
 CALL php bin/magento setup:static-content:deploy %LOCALE% --theme="%THEME%" --no-html-minify -f
+CALL grunt watch less:%GRUNT_THEME%
 
 :: ----------------------------------------------------------------------------
 

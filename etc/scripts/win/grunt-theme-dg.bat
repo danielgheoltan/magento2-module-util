@@ -3,4 +3,4 @@ CLS
 
 :: ----------------------------------------------------------------------------
 
-CALL deploy-theme Magento/luma en_US
+CALL grunt-theme dg
