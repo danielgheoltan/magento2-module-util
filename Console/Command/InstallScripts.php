@@ -5,17 +5,22 @@ use DG\Util\Helper\Data;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
-use Magento\Framework\Module\Dir;
 
 class InstallScripts extends Command
 {
     const COMMAND_NAME = 'dg-util:install-scripts';
     const COMMAND_DESCRIPTION = 'Installs scripts that save you time and effort';
+
+    /**
+     * Name of "theme" input option
+     */
+    const THEME_OPTION = 'theme';
 
     /**
      * @var Data
@@ -38,6 +43,11 @@ class InstallScripts extends Command
     protected $scripts;
 
     /**
+     * @var array
+     */
+    protected $sourceScripts;
+
+    /**
      * InstallScripts constructor.
      *
      * @param Data $helper
@@ -54,6 +64,7 @@ class InstallScripts extends Command
         $this->filesystem = $filesystem;
         $this->rootDir = $this->filesystem->getDirectoryWrite(DirectoryList::ROOT);
         $this->scripts = $this->helper->getScripts();
+        $this->sourceScripts = $this->helper->getSourceScripts();
     }
 
     /**
@@ -62,7 +73,16 @@ class InstallScripts extends Command
     protected function configure()
     {
         $this->setName(self::COMMAND_NAME)
-            ->setDescription(self::COMMAND_DESCRIPTION);
+            ->setDescription(self::COMMAND_DESCRIPTION)
+            ->setDefinition([
+                new InputOption(
+                    self::THEME_OPTION,
+                    '-t',
+                    InputOption::VALUE_IS_ARRAY | InputOption::VALUE_OPTIONAL,
+                    'Generate scripts for the specified themes.',
+                    ['none']
+                )
+            ]);
 
         parent::configure();
     }
@@ -73,34 +93,57 @@ class InstallScripts extends Command
      * @param WriteInterface $dir
      * @param string $sourcePath
      * @param string $destinationPath
+     * @param string $method
      * @return bool
      * @throws \Magento\Framework\Exception\FileSystemException
      */
     private function publishFile(
         WriteInterface $dir,
         $sourcePath,
-        $destinationPath
+        $destinationPath,
+        $method = 'symlink'
     ) {
-        $dir->delete($destinationPath);
-        $symlink = $dir->createSymlink($sourcePath, $destinationPath, $dir);
+        $result = false;
+
+        if ($method == 'symlink') {
+            $dir->delete($destinationPath);
+            $result = $dir->createSymlink($sourcePath, $destinationPath, $dir);
+        } else {
+            if (!$dir->isExist($destinationPath)) {
+                $result = $dir->copyFile($sourcePath, $destinationPath, $dir);
+            }
+        }
+
         $dir->changePermissions($destinationPath, 0777);
 
-        return $symlink;
+        return $result;
     }
 
     /**
      * Publish files
      *
+     * @param array $themes
      * @throws \Magento\Framework\Exception\FileSystemException
      */
-    private function publishFiles()
+    private function publishFiles($themes)
     {
         foreach ($this->scripts as $script) {
-            $dir = $this->rootDir;
-            $sourcePath = $this->helper->getScriptRelativePath($script);
-            $destinationPath = $script;
+            $this->publishFile(
+                $this->rootDir,
+                $this->helper->getScriptRelativePath($script),
+                $script
+            );
+        }
 
-            $this->publishFile($dir, $sourcePath, $destinationPath);
+        foreach ($themes as $option) {
+            foreach ($this->sourceScripts as $script) {
+                $this->publishFile(
+                    $this->rootDir,
+                    $this->helper->getScriptRelativePath($script),
+                    str_replace('blank', $option, $script),
+                    'copy'
+                );
+            }
         }
     }
 
@@ -110,7 +153,8 @@ class InstallScripts extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         try {
-            $this->publishFiles();
+            $themes = $input->getOption(self::THEME_OPTION);
+            $this->publishFiles($themes);
             $output->writeln('<info>Scripts have been successfully installed to Magento root folder.</info>');
         } catch (\Exception $e) {
             $output->writeln('<error>' . $e->getMessage() . '</error>');
