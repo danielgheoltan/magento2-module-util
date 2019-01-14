@@ -3,6 +3,7 @@
     <type name="Magento\Framework\Console\CommandList">
        <arguments>
            <argument name="commands" xsi:type="array">
+               <item name="config" xsi:type="object">DG\Util\Console\Command\Config</item>
                <item name="install-scripts" xsi:type="object">DG\Util\Console\Command\InstallScripts</item>
                <item name="uninstall-scripts" xsi:type="object">DG\Util\Console\Command\UninstallScripts</item>
            </argument>
