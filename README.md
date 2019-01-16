@@ -11,16 +11,13 @@ Installs scripts that save you time and effort.
 | `deploy-frontend.bat`          | `./deploy-frontend`          | ...         |
 | `deploy-grunt-theme.bat`       | `./deploy-grunt-theme`       | ...         |
 | `deploy-grunt-theme-blank.bat` | `./deploy-grunt-theme-blank` | ...         |
-| `deploy-grunt-theme-dg.bat`    | `./deploy-grunt-theme-dg`    | ...         |
 | `deploy-grunt-theme-luma.bat`  | `./deploy-grunt-theme-luma`  | ...         |
 | `deploy-theme.bat`             | `./deploy-theme`             | ...         |
 | `deploy-theme-blank.bat`       | `./deploy-theme-blank`       | ...         |
-| `deploy-theme-dg.bat`          | `./deploy-theme-dg`          | ...         |
 | `deploy-theme-luma.bat`        | `./deploy-theme-luma`        | ...         |
 | `di.bat`                       | `./di`                       | ...         |
 | `grunt-theme.bat`              | `./grunt-theme`              | ...         |
 | `grunt-theme-blank.bat`        | `./grunt-theme-blank`        | ...         |
-| `grunt-theme-dg.bat`           | `./grunt-theme-dg`           | ...         |
 | `grunt-theme-luma.bat`         | `./grunt-theme-luma`         | ...         |
 
 ## Install
@@ -32,6 +29,7 @@ php bin/magento setup:upgrade
 php bin/magento module:enable DG_Util
 php bin/magento cache:flush
 php bin/magento dg-util:install-scripts
+php bin/magento dg-util:config
 ```
 
 ## Remove
