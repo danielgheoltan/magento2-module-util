@@ -97,32 +97,33 @@ deploy
 deploy-frontend
 ---------------
 
-> 1. **Enables maintenance mode**
-> 
->    `php bin/magento maintenance:enable` 
-> 2. **Deletes the contents of the following directories:**
-> 
->    * `generated`
->    * `pub/static/frontend`
->    * `var/cache`
->    * `var/page_cache`
->    * `var/view_preprocessed`
-> 
-> 3. **Flushes cache storage**
-> 
->    `php bin/magento cache:flush`
-> 
-> 4. **Upgrades the Magento application, DB data, and schema**
-> 
->    `php bin/magento setup:upgrade`
->   
-> 5. **Deploys static view files for frontend area**
-> 
->    `php bin/magento setup:static-content:deploy en_US --area="frontend" --no-html-minify -f`
->    
-> 6. **Disables maintenance mode**
-> 
->    `php bin/magento maintenance:disable`
+1. **Enables maintenance mode**
+
+   `php bin/magento maintenance:enable`
+   
+2. **Deletes the contents of the following directories:**
+
+   * `generated`
+   * `pub/static/frontend`
+   * `var/cache`
+   * `var/page_cache`
+   * `var/view_preprocessed`
+
+3. **Flushes cache storage**
+
+   `php bin/magento cache:flush`
+
+4. **Upgrades the Magento application, DB data, and schema**
+
+   `php bin/magento setup:upgrade`
+  
+5. **Deploys static view files for frontend area**
+
+   `php bin/magento setup:static-content:deploy en_US --area="frontend" --no-html-minify -f`
+   
+6. **Disables maintenance mode**
+
+   `php bin/magento maintenance:disable`
 
 deploy-backend
 --------------
