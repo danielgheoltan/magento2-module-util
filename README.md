@@ -86,7 +86,7 @@ deploy
 
    `php bin/magento catalog:images:resize`
    
-8. **Deploy static view files**
+8. **Deploys static view files**
 
    `php bin/magento setup:static-content:deploy en_US --no-html-minify -f`
    
@@ -94,37 +94,35 @@ deploy
 
    `php bin/magento maintenance:disable`
 
-
 deploy-frontend
 ---------------
 
-1. **Enables maintenance mode**
-
-   `php bin/magento maintenance:enable`
-   
-2. **Deletes the contents of the following directories:**
-
-   * `generated`
-   * `pub/static/frontend`
-   * `var/cache`
-   * `var/page_cache`
-   * `var/view_preprocessed`
-
-3. **Flushes cache storage**
-
-   `php bin/magento cache:flush`
-
-4. **Upgrades the Magento application, DB data, and schema**
-
-   `php bin/magento setup:upgrade`
-  
-5. **Deploy static view files for frontend area**
-
-   `php bin/magento setup:static-content:deploy en_US --area="frontend" --no-html-minify -f`
-   
-6. **Disables maintenance mode**
-
-   `php bin/magento maintenance:disable`
+> 1. **Enables maintenance mode**
+> 
+>    `php bin/magento maintenance:enable` 
+> 2. **Deletes the contents of the following directories:**
+> 
+>    * `generated`
+>    * `pub/static/frontend`
+>    * `var/cache`
+>    * `var/page_cache`
+>    * `var/view_preprocessed`
+> 
+> 3. **Flushes cache storage**
+> 
+>    `php bin/magento cache:flush`
+> 
+> 4. **Upgrades the Magento application, DB data, and schema**
+> 
+>    `php bin/magento setup:upgrade`
+>   
+> 5. **Deploys static view files for frontend area**
+> 
+>    `php bin/magento setup:static-content:deploy en_US --area="frontend" --no-html-minify -f`
+>    
+> 6. **Disables maintenance mode**
+> 
+>    `php bin/magento maintenance:disable`
 
 deploy-backend
 --------------
@@ -149,7 +147,7 @@ deploy-backend
 
    `php bin/magento setup:upgrade`
   
-5. **Deploy static view files for frontend area**
+5. **Deploys static view files for frontend area**
 
    `php bin/magento setup:static-content:deploy en_US --area="adminhtml" --no-html-minify -f`
    
@@ -172,7 +170,7 @@ deploy-grunt-theme \<theme\> \<locale\> \<grunt_theme\>
 
    `grunt exec:<theme>`
  
-4. **Deploy static view files**
+4. **Deploys static view files**
 
    `php bin/magento setup:static-content:deploy <locale> --theme="<theme>" --no-html-minify -f` 
   
@@ -201,7 +199,7 @@ deploy-theme \<theme\> \<locale\>
    * `var/view_preprocessed/pub/static/frontend/<theme>/<locale>`
    * `var/view_preprocessed/source/frontend/<theme>/<locale>`
  
-2. **Deploy static view files**
+2. **Deploys static view files**
 
    `php bin/magento setup:static-content:deploy <locale> --theme="<theme>" --no-html-minify -f` 
 
