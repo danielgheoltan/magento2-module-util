@@ -50,7 +50,8 @@ php bin/magento cache:flush
 | `grunt-theme-luma.bat`         | `./grunt-theme-luma`         |
 
 
-#### deploy
+deploy
+------
 
 1. **Enables maintenance mode**
 
@@ -93,9 +94,9 @@ php bin/magento cache:flush
 
    `php bin/magento maintenance:disable`
 
----
 
-#### deploy-frontend
+deploy-frontend
+---------------
 
 1. **Enables maintenance mode**
 
@@ -125,9 +126,8 @@ php bin/magento cache:flush
 
    `php bin/magento maintenance:disable`
 
----
-
-#### deploy-backend
+deploy-backend
+--------------
 
 1. **Enables maintenance mode**
 
@@ -157,9 +157,8 @@ php bin/magento cache:flush
 
    `php bin/magento maintenance:disable`
 
----
-
-#### deploy-grunt-theme \<theme\> \<locale\> \<grunt_theme\>
+deploy-grunt-theme \<theme\> \<locale\> \<grunt_theme\>
+-------------------------------------------------------
 
 1. **Deletes the contents of the following directories:**
    * `pub/static/frontend/<theme>/<locale>`
@@ -181,22 +180,18 @@ php bin/magento cache:flush
 
    `grunt watch less:<grunt_theme>`
 
----
-
-#### deploy-grunt-theme-blank
+deploy-grunt-theme-blank
+------------------------
 
 `deploy-grunt-theme Magento/blank en_US blank`
 
----
-
-#### deploy-grunt-theme-luma
+deploy-grunt-theme-luma
+-----------------------
 
 `deploy-grunt-theme Magento/luma en_US luma`
 
----
-
-#### deploy-theme \<theme\> \<locale\>
-
+deploy-theme \<theme\> \<locale\>
+---------------------------------
 
 1. **Deletes the contents of the following directories:**
    * `pub/static/frontend/<theme>/<locale>`
@@ -210,34 +205,29 @@ php bin/magento cache:flush
 
    `php bin/magento setup:static-content:deploy <locale> --theme="<theme>" --no-html-minify -f` 
 
----
-
-#### deploy-theme-blank
+deploy-theme-blank
+------------------
 
 `deploy-theme Magento/blank en_US`
 
----
-
-#### deploy-theme-luma
+deploy-theme-luma
+-----------------
 
 `deploy-theme Magento/luma en_US`
 
----
+grunt-theme \<grunt_theme\>
+---------------------------
 
-#### grunt-theme \<grunt_theme\>
+**Compiles CSS files** using the symlinks published in the `pub/static/frontend/` directory, **tracks the changes** in the source files and **recompiles CSS files**.
 
-1. **Compiles CSS files using the symlinks published in the `pub/static/frontend/` directory, tracks the changes in the source files and recompiles CSS files**
+`grunt less:<grunt_theme> && grunt watch less:<grunt_theme>`
 
-   `grunt less:<grunt_theme> && grunt watch less:<grunt_theme>`
-
----
-
-#### grunt-theme-blank
+grunt-theme-blank
+-----------------
 
 `grunt-theme blank`
 
----
-
-#### grunt-theme-luma
+grunt-theme-luma
+----------------
 
 `grunt-theme luma`
