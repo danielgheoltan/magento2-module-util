@@ -49,9 +49,10 @@ php bin/magento cache:flush
 | `grunt-theme-blank.bat`        | `./grunt-theme-blank`        |
 | `grunt-theme-luma.bat`         | `./grunt-theme-luma`         |
 
+## deploy
 
-deploy
-------
+<details>
+    <summary>Details</summary>
 
 1. **Enables maintenance mode**
 
@@ -93,6 +94,7 @@ deploy
 9. **Disables maintenance mode**
 
    `php bin/magento maintenance:disable`
+</details>
 
 deploy-frontend
 ---------------
@@ -125,8 +127,10 @@ deploy-frontend
 
    `php bin/magento maintenance:disable`
 
-deploy-backend
---------------
+## deploy-backend
+
+<details>
+    <summary>Details</summary>
 
 1. **Enables maintenance mode**
 
@@ -155,9 +159,12 @@ deploy-backend
 6. **Disables maintenance mode**
 
    `php bin/magento maintenance:disable`
+</details>
 
-deploy-grunt-theme \<theme\> \<locale\> \<grunt_theme\>
--------------------------------------------------------
+## deploy-grunt-theme \<theme\> \<locale\> \<grunt_theme\>
+
+<details>
+    <summary>Details</summary>
 
 1. **Deletes the contents of the following directories:**
    * `pub/static/frontend/<theme>/<locale>`
@@ -178,19 +185,20 @@ deploy-grunt-theme \<theme\> \<locale\> \<grunt_theme\>
 5. **Tracks the changes in the source files and recompiles CSS files**
 
    `grunt watch less:<grunt_theme>`
+</details>
 
-deploy-grunt-theme-blank
-------------------------
+## deploy-grunt-theme-blank
 
 `deploy-grunt-theme Magento/blank en_US blank`
 
-deploy-grunt-theme-luma
------------------------
+## deploy-grunt-theme-luma
 
 `deploy-grunt-theme Magento/luma en_US luma`
 
-deploy-theme \<theme\> \<locale\>
----------------------------------
+## deploy-theme \<theme\> \<locale\>
+
+<details>
+    <summary>Details</summary>
 
 1. **Deletes the contents of the following directories:**
    * `pub/static/frontend/<theme>/<locale>`
@@ -203,30 +211,26 @@ deploy-theme \<theme\> \<locale\>
 2. **Deploys static view files**
 
    `php bin/magento setup:static-content:deploy <locale> --theme="<theme>" --no-html-minify -f` 
+</details>
 
-deploy-theme-blank
-------------------
+## deploy-theme-blank
 
 `deploy-theme Magento/blank en_US`
 
-deploy-theme-luma
------------------
+## deploy-theme-luma
 
 `deploy-theme Magento/luma en_US`
 
-grunt-theme \<grunt_theme\>
----------------------------
+## grunt-theme \<grunt_theme\>
 
 **Compiles CSS files** using the symlinks published in the `pub/static/frontend/` directory, **tracks the changes** in the source files and **recompiles CSS files**.
 
 `grunt less:<grunt_theme> && grunt watch less:<grunt_theme>`
 
-grunt-theme-blank
------------------
+## grunt-theme-blank
 
 `grunt-theme blank`
 
-grunt-theme-luma
-----------------
+## grunt-theme-luma
 
 `grunt-theme luma`
