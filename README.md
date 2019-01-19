@@ -195,6 +195,7 @@ php bin/magento cache:flush
 > <details>
 >     <summary>Details</summary>
 >
+> \
 > `deploy-grunt-theme Magento/blank en_US blank`
 > </details>
 
@@ -203,6 +204,7 @@ php bin/magento cache:flush
 > <details>
 >     <summary>Details</summary>
 >
+> \
 > `deploy-grunt-theme Magento/luma en_US luma`
 > </details>
 
@@ -229,6 +231,7 @@ php bin/magento cache:flush
 > <details>
 >     <summary>Details</summary>
 >
+> \
 > `deploy-theme Magento/blank en_US`
 < </details>
     
@@ -237,6 +240,7 @@ php bin/magento cache:flush
 > <details>
 >     <summary>Details</summary>
 >
+> \
 > `deploy-theme Magento/luma en_US`
 > </details>
 
@@ -245,6 +249,7 @@ php bin/magento cache:flush
 > <details>
 >     <summary>Details</summary>
 >
+> \
 > **Compiles CSS files** using the symlinks published in the `pub/static/frontend/` directory, **tracks the changes** in the source files and **recompiles CSS files**.
 >
 > `grunt less:<grunt_theme> && grunt watch less:<grunt_theme>`
@@ -255,6 +260,7 @@ php bin/magento cache:flush
 > <details>
 >     <summary>Details</summary>
 >
+> \
 > `grunt-theme blank`
 > </details>
 
@@ -263,5 +269,6 @@ php bin/magento cache:flush
 > <details>
 >     <summary>Details</summary>
 >
+> \
 > `grunt-theme luma`
 > </details>
