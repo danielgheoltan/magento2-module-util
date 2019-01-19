@@ -233,7 +233,7 @@ php bin/magento cache:flush
 >
 > \
 > `deploy-theme Magento/blank en_US`
-< </details>
+> </details>
     
 ## deploy-theme-luma
 
