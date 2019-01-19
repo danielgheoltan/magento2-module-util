@@ -96,8 +96,10 @@ php bin/magento cache:flush
    `php bin/magento maintenance:disable`
 </details>
 
-deploy-frontend
----------------
+## deploy-frontend
+
+<details>
+    <summary>Details</summary>
 
 1. **Enables maintenance mode**
 
@@ -126,6 +128,7 @@ deploy-frontend
 6. **Disables maintenance mode**
 
    `php bin/magento maintenance:disable`
+</details>
 
 ## deploy-backend
 
@@ -200,17 +203,17 @@ deploy-frontend
 <details>
     <summary>Details</summary>
 
-1. **Deletes the contents of the following directories:**
-   * `pub/static/frontend/<theme>/<locale>`
-   * `var/cache`
-   * `var/page_cache`
-   * `var/view_preprocessed/less/frontend/<theme>/<locale>`
-   * `var/view_preprocessed/pub/static/frontend/<theme>/<locale>`
-   * `var/view_preprocessed/source/frontend/<theme>/<locale>`
- 
-2. **Deploys static view files**
-
-   `php bin/magento setup:static-content:deploy <locale> --theme="<theme>" --no-html-minify -f` 
+> 1. **Deletes the contents of the following directories:**
+>    * `pub/static/frontend/<theme>/<locale>`
+>    * `var/cache`
+>    * `var/page_cache`
+>    * `var/view_preprocessed/less/frontend/<theme>/<locale>`
+>    * `var/view_preprocessed/pub/static/frontend/<theme>/<locale>`
+>    * `var/view_preprocessed/source/frontend/<theme>/<locale>`
+> 
+> 2. **Deploys static view files**
+>
+>    `php bin/magento setup:static-content:deploy <locale> --theme="<theme>" --no-html-minify -f` 
 </details>
 
 ## deploy-theme-blank
