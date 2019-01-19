@@ -155,7 +155,7 @@ php bin/magento cache:flush
 >
 >    `php bin/magento setup:upgrade`
 >
-> 5. **Deploys static view files for frontend area**
+> 5. **Deploys static view files for adminhtml area**
 >
 >    `php bin/magento setup:static-content:deploy en_US --area="adminhtml" --no-html-minify -f`
 >
