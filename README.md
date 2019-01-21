@@ -244,6 +244,33 @@ php bin/magento cache:flush
 > `deploy-theme Magento/luma en_US`
 > </details>
 
+## di
+
+> <details>
+>     <summary>Details</summary>
+>
+> 1. **Enables maintenance mode**
+>
+>    `php bin/magento maintenance:enable`
+>   
+> 2. **Deletes the contents of the following directories:**
+>
+>    * `generated`
+>    * `var/di`
+>
+> 3. **Flushes cache storage**
+>
+>    `php bin/magento cache:flush`
+>
+> 4. **Generates DI configuration and all missing classes that can be auto-generated**
+>
+>    `php bin/magento setup:di:compile`
+>  
+> 5. **Disables maintenance mode**
+>
+>    `php bin/magento maintenance:disable`
+> </details>
+
 ## grunt-theme \<grunt_theme\>
 
 > <details>
