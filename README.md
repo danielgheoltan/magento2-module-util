@@ -182,8 +182,12 @@ php bin/magento cache:flush
 >    `php bin/magento maintenance:disable`
 > </details>
 
-## deploy-grunt-theme \<theme\> \<locale\> \<grunt_theme\>
+## deploy-grunt-theme
 
+> Usage:
+>
+> ```deploy-grunt-theme <theme> <locale> <grunt_theme>```
+>
 > <details>
 >     <summary>Details</summary>
 >
