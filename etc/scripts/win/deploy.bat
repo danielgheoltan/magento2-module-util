@@ -23,7 +23,7 @@ CALL php bin/magento setup:upgrade
 CALL php bin/magento indexer:reindex
 
 :: Resize images
-CALL php bin/magento catalog:images:resize
+:: CALL php bin/magento catalog:images:resize
 
 :: Deploy static view files
 CALL php bin/magento setup:static-content:deploy en_US --no-html-minify -f

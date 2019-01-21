@@ -83,15 +83,11 @@ php bin/magento cache:flush
 >
 >    `php bin/magento indexer:reindex`
 >
-> 7. **Creates resized product images**
->
->    `php bin/magento catalog:images:resize`
->
-> 8. **Deploys static view files**
+> 7. **Deploys static view files**
 >
 >    `php bin/magento setup:static-content:deploy en_US --no-html-minify -f`
 >
-> 9. **Disables maintenance mode**
+> 8. **Disables maintenance mode**
 >
 >    `php bin/magento maintenance:disable`
 > </details>
