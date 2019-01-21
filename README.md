@@ -215,7 +215,7 @@ php bin/magento cache:flush
 >     <summary>Details</summary>
 >
 > \
-> `deploy-grunt-theme Magento/blank en_US blank`
+> Executes `deploy-grunt-theme Magento/blank en_US blank`.
 > </details>
 
 ## deploy-grunt-theme-luma
@@ -224,11 +224,15 @@ php bin/magento cache:flush
 >     <summary>Details</summary>
 >
 > \
-> `deploy-grunt-theme Magento/luma en_US luma`
+> Executes `deploy-grunt-theme Magento/luma en_US luma`.
 > </details>
 
-## deploy-theme \<theme\> \<locale\>
+## deploy-theme
 
+> Usage:
+>
+> ```deploy-theme <theme> <locale>```
+>
 > <details>
 >     <summary>Details</summary>
 >
@@ -252,7 +256,7 @@ php bin/magento cache:flush
 >     <summary>Details</summary>
 >
 > \
-> `deploy-theme Magento/blank en_US`
+> Executes `deploy-theme Magento/blank en_US`.
 > </details>
     
 ## deploy-theme-luma
@@ -261,7 +265,7 @@ php bin/magento cache:flush
 >     <summary>Details</summary>
 >
 > \
-> `deploy-theme Magento/luma en_US`
+> Executes `deploy-theme Magento/luma en_US`.
 > </details>
 
 ## di
@@ -291,8 +295,12 @@ php bin/magento cache:flush
 >    `php bin/magento maintenance:disable`
 > </details>
 
-## grunt-theme \<grunt_theme\>
+## grunt-theme
 
+> Usage:
+>
+> ```grunt-theme <grunt_theme>```
+>
 > <details>
 >     <summary>Details</summary>
 >
@@ -308,7 +316,7 @@ php bin/magento cache:flush
 >     <summary>Details</summary>
 >
 > \
-> `grunt-theme blank`
+> Executes `grunt-theme blank`.
 > </details>
 
 ## grunt-theme-luma
@@ -317,5 +325,5 @@ php bin/magento cache:flush
 >     <summary>Details</summary>
 >
 > \
-> `grunt-theme luma`
+> Executes `grunt-theme luma`.
 > </details>
