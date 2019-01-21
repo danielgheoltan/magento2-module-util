@@ -15,10 +15,8 @@ php bin/magento cache:flush
 php bin/magento dg-util:install-scripts
 php bin/magento dg-util:config
 ```
-[here](#commands)
-[here](##commands)
 
-The ```dg-util:install-scripts``` command will install some handy scripts in Magento 2 root folder, as you can see below.
+The ```dg-util:install-scripts``` command will install a set of default handy scripts in Magento 2 root folder, as you can see [below](#commands).
 These scripts are symlinked to the corresponding scripts in ```vendor/dg/module-util/etc/scripts``` directory.
 \
 \
@@ -29,7 +27,7 @@ For example:
 php bin/magento dg-util:install-scripts --theme=first --theme=second  
 ```
 
-will create the following files:
+will create the following scripts:
 
 | Windows                         | Linux                   |
 | ------------------------------- | ----------------------- |
