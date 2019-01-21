@@ -15,6 +15,30 @@ php bin/magento cache:flush
 php bin/magento dg-util:install-scripts
 php bin/magento dg-util:config
 ```
+[here](#commands)
+[here](##commands)
+
+The ```dg-util:install-scripts``` command will install some handy scripts in Magento 2 root folder, as you can see below.
+These scripts are symlinked to the corresponding scripts in ```vendor/dg/module-util/etc/scripts``` directory.
+\
+\
+You can also install custom scripts for several themes using the ```--theme``` argument.
+For example:
+
+```
+php bin/magento dg-util:install-scripts --theme=first --theme=second  
+```
+
+will create the following files:
+
+| Windows                         | Linux                   |
+| ------------------------------- | ----------------------- |
+| `deploy-grunt-theme-first.bat`  | `./deploy-grunt-first`  |
+| `deploy-grunt-theme-second.bat` | `./deploy-grunt-second` |
+| `deploy-theme-first.bat`        | `./deploy-theme-first`  |
+| `deploy-theme-second.bat`       | `./deploy-theme-second` |
+| `grunt-theme-first.bat`         | `./grunt-theme-first`   |
+| `grunt-theme-second.bat`        | `./grunt-theme-second`  |
 
 ## Remove
 
@@ -166,6 +190,7 @@ php bin/magento cache:flush
 >     <summary>Details</summary>
 >
 > 1. **Deletes the contents of the following directories:**
+>
 >    * `pub/static/frontend/<theme>/<locale>`
 >    * `var/cache`
 >    * `var/page_cache`
@@ -210,6 +235,7 @@ php bin/magento cache:flush
 >     <summary>Details</summary>
 >
 > 1. **Deletes the contents of the following directories:**
+>
 >     * `pub/static/frontend/<theme>/<locale>`
 >     * `var/cache`
 >     * `var/page_cache`
