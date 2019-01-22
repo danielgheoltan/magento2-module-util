@@ -3,4 +3,5 @@ clear
 
 # -----------------------------------------------------------------------------
 
+pidof grunt && kill -9 $(pidof grunt)
 grunt less:$1 && grunt watch less:$1
