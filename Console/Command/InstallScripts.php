@@ -80,7 +80,7 @@ class InstallScripts extends Command
                     '-t',
                     InputOption::VALUE_IS_ARRAY | InputOption::VALUE_OPTIONAL,
                     'Generate scripts for the specified themes.',
-                    ['none']
+                    []
                 )
             ]);
 
