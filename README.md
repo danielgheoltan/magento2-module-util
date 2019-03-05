@@ -7,7 +7,7 @@ Installs scripts that save you time and effort.
 ## Install
 
 ```
-composer require danielgheoltan/module-util
+composer require danielgheoltan/magento2-module-util
 php bin/magento setup:upgrade
 php bin/magento module:enable DG_Util
 php bin/magento cache:flush
@@ -41,14 +41,14 @@ will create the following scripts:
 
 ```
 php bin/magento dg-util:uninstall-scripts
-composer remove danielgheoltan/module-util
+composer remove danielgheoltan/magento2-module-util
 php bin/magento cache:flush
 ```
 
 ## Update
 
 ```
-composer update danielgheoltan/module-util
+composer update danielgheoltan/magento2-module-util
 php bin/magento cache:flush
 ```
 
