@@ -1,6 +1,6 @@
 {
-    "name": "dg/module-util",
-    "description": "N/A",
+    "name": "danielgheoltan/module-util",
+    "description": "Installs scripts that save you time and effort.",
     "require": {
         "php": "*",
         "magento/framework": ">=100.0.0"
