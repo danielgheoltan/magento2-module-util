@@ -1,5 +1,5 @@
 {
-    "name": "danielgheoltan/module-util",
+    "name": "danielgheoltan/magento2-module-util",
     "description": "Installs scripts that save you time and effort.",
     "require": {
         "php": "*",
