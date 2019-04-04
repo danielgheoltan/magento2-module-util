@@ -2,7 +2,6 @@
 namespace DG\Util\Helper;
 
 use Magento\Framework\App\Helper\Context;
-use Magento\Framework\Filesystem\Directory\WriteInterface;
 use Magento\Framework\Filesystem\DirectoryList;
 use Magento\Framework\Module\Dir;
 use Magento\Framework\OsInfo;
@@ -118,7 +117,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             'grunt-theme-luma'
         ];
 
-        return array_map(array($this, 'appendScriptExtension'), $scripts);
+        return array_map([$this, 'appendScriptExtension'], $scripts);
     }
 
     /**
@@ -134,6 +133,6 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             'grunt-theme-blank'
         ];
 
-        return array_map(array($this, 'appendScriptExtension'), $scripts);
+        return array_map([$this, 'appendScriptExtension'], $scripts);
     }
 }
