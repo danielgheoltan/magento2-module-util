@@ -3,6 +3,25 @@ clear
 
 # -----------------------------------------------------------------------------
 
+input_deploy="n"
+
+for i in "$@"
+do
+    case $i in
+        -s|--static-content-deploy)
+            input_deploy=y
+        ;;
+    esac
+done
+
+if [ "$input_deploy" == "n" ]
+then
+    read -r -t 3 -p "Deploy static view files? [Y/n] " input_deploy
+    echo
+fi
+
+# -----------------------------------------------------------------------------
+
 # Enable maintenance mode
 php bin/magento maintenance:enable
 
@@ -25,8 +44,18 @@ php bin/magento indexer:reindex
 # Resize images
 # php bin/magento catalog:images:resize
 
-# Deploy static view files
-php bin/magento setup:static-content:deploy en_US --no-html-minify -f
+case "$input_deploy" in
+    [yY])
+        # Deploy static view files
+        php bin/magento setup:static-content:deploy --no-html-minify -f
+    ;;
+    [nN])
+        # Skip
+    ;;
+    *)
+        # Help
+    ;;
+esac
 
 # Disable maintenance mode
 php bin/magento maintenance:disable
