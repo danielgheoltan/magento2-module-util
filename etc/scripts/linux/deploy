@@ -42,6 +42,7 @@ php bin/magento setup:upgrade
 # Reindex
 php bin/magento indexer:reindex
 
+# Deploy static view files
 case "$input_deploy" in
     [yY])
         # Deploy static view files
