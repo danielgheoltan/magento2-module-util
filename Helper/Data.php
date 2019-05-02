@@ -106,13 +106,16 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             'deploy-backend',
             'deploy-frontend',
             'deploy-grunt-theme',
+            'deploy-grunt-theme-backend',
             'deploy-grunt-theme-blank',
             'deploy-grunt-theme-luma',
             'deploy-theme',
+            'deploy-theme-backend',
             'deploy-theme-blank',
             'deploy-theme-luma',
             'di',
             'grunt-theme',
+            'grunt-theme-backend',
             'grunt-theme-blank',
             'grunt-theme-luma'
         ];
