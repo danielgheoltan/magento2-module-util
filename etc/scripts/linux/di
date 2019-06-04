@@ -7,7 +7,7 @@ clear
 php bin/magento maintenance:enable
 
 # Cleanup
-rm -rf ./generated/* ./var/di/*
+rm -rf ./generated/*
 
 # Flush cache
 php bin/magento cache:flush

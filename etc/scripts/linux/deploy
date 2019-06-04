@@ -7,7 +7,7 @@ clear
 php bin/magento maintenance:enable
 
 # Cleanup
-rm -rf ./generated/* ./pub/static/adminhtml/* ./pub/static/frontend/* ./var/cache/* ./var/page_cache/* ./var/view_preprocessed/*
+rm -rf ./generated/* ./pub/static/{adminhtml/*,frontend/*} ./var/{cache,page_cache,view_preprocessed}
 rm -rf ./pub/media/catalog/product/cache/*
 rm -f ./pub/static/deployed_version.txt
 
