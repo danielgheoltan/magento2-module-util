@@ -4,6 +4,7 @@
        <arguments>
            <argument name="commands" xsi:type="array">
                <item name="config" xsi:type="object">DG\Util\Console\Command\Config</item>
+               <item name="deploy-theme" xsi:type="object">DG\Util\Console\Command\DeployTheme</item>
                <item name="install-scripts" xsi:type="object">DG\Util\Console\Command\InstallScripts</item>
                <item name="uninstall-scripts" xsi:type="object">DG\Util\Console\Command\UninstallScripts</item>
            </argument>
