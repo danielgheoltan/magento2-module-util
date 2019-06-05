@@ -1,8 +1,6 @@
 <?php
 namespace DG\Util\Console\Command;
 
-use DG\Util\Helper\Data;
-
 use Magento\Theme\Model\ResourceModel\Theme\CollectionFactory as ThemeCollectionFactory;
 
 use Symfony\Component\Console\Command\Command;
@@ -26,11 +24,6 @@ class DeployTheme extends Command
     const LANGUAGE_OPTION = 'language';
 
     /**
-     * @var Data
-     */
-    protected $helper;
-
-    /**
      * @var ThemeCollectionFactory
      */
     private $_collectionFactory;
@@ -39,16 +32,13 @@ class DeployTheme extends Command
      * DeployTheme constructor.
      *
      * @param ThemeCollectionFactory $collectionFactory
-     * @param Data $helper
      */
     public function __construct(
-        ThemeCollectionFactory $collectionFactory,
-        Data $helper
+        ThemeCollectionFactory $collectionFactory
     ) {
         parent::__construct();
 
         $this->_collectionFactory = $collectionFactory;
-        $this->helper = $helper;
     }
 
     /**
@@ -107,8 +97,6 @@ class DeployTheme extends Command
      */
     private function deployThemes($output, $themes, $languages)
     {
-        // echo PHP_EOL;
-
         foreach ($themes as $theme) {
             if (!$this->existsTheme($theme)) {
                 $output->writeln('');
@@ -155,66 +143,6 @@ class DeployTheme extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         try {
-
-            /*
-            $cmd = 'pidof grunt && kill -9 $(pidof grunt)';
-            $descriptorspec = [
-                0 => ["pipe", "r"],   // stdin is a pipe that the child will read from
-                1 => ["pipe", "w"],   // stdout is a pipe that the child will write to
-                2 => ["pipe", "w"]    // stderr is a pipe that the child will write to
-            ];
-            flush();
-            $process = proc_open($cmd, $descriptorspec, $pipes, realpath('./'), []);
-
-            if (is_resource($process)) {
-                while ($s = fgets($pipes[1])) {
-                    print $s;
-                    flush();
-                }
-            }
-
-            // ----------------------------------------------------------------
-
-            $cmd = 'grunt less:carcloud && grunt watch less:carcloud';
-            $cmd = 'php bin/magento setup:static-content:deploy ro_RO --theme="Carcloud/default" --no-html-minify -f';
-
-            $descriptorspec = [
-                0 => ["pipe", "r"],   // stdin is a pipe that the child will read from
-                1 => ["pipe", "w"],   // stdout is a pipe that the child will write to
-                2 => ["pipe", "w"]    // stderr is a pipe that the child will write to
-            ];
-            flush();
-            $process = proc_open($cmd, $descriptorspec, $pipes, realpath('./'), []);
-
-            if (is_resource($process)) {
-                while ($s = fgets($pipes[1])) {
-                    print $s;
-                    flush();
-                }
-            }
-
-            return;
-
-            $command = 'ls -la';
-            $command = 'grunt exec:blank';
-
-            if (method_exists('Symfony\Component\Process\Process', 'fromShellCommandline')) {
-                # https://github.com/symfony/process/blob/master/Process.php
-                # public static function fromShellCommandline(string $command, string $cwd = null, array $env = null, $input = null, ?float $timeout = 60)
-                $process = Process::fromShellCommandline($command);
-            } else {
-                # \Symfony\Component\Process\Process::__construct(commandline)
-                # public function __construct($commandline, string $cwd = null, array $env = null, $input = null, ?float $timeout = 60)
-                $process = new Process($command);
-            }
-
-            $process
-                ->setTimeout(100)
-                ->run();
-
-            var_dump($process->getOutput());
-            */
-
             $themes = $input->getOption(self::THEME_OPTION);
             $languages = $input->getOption(self::LANGUAGE_OPTION);
 
